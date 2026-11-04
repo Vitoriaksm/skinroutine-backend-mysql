@@ -22,7 +22,6 @@ O código-fonte está estruturado de forma modular para garantir baixo acoplamen
 
 ```text
 skincare-routine-system/
-├── .gitignore              # Impede o versionamento de caches e dados sensíveis
 ├── README.md               # Documentação completa do projeto
 ├── DDL_skincare_db.sql     # Script de criação do MySQL (Entrega 4)
 ├── conexao.py              # Camada de Conexão: Trata abertura e erros de infraestrutura
