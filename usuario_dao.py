@@ -21,10 +21,10 @@ class UsuarioDAO:
             """
             cursor.execute(sql, (nome, email, senha, tipo_pele_valido))
             conn.commit()
-            print(f"\n✅ Usuário '{nome}' cadastrado com sucesso! (ID Gerado: {cursor.lastrowid})")
+            print(f"\n[SUCESSO] Usuário '{nome}' cadastrado com sucesso! (ID Gerado: {cursor.lastrowid})")
         except Error as e:
             conn.rollback()
-            print(f"\n❌ [ERRO SQL] Falha ao cadastrar usuário: {e}")
+            print(f"\n[ERRO SQL] Falha ao cadastrar usuário: {e}")
         finally:
             cursor.close()
             conn.close()
@@ -48,7 +48,7 @@ class UsuarioDAO:
                 for u in usuarios:
                     print(f"ID: {u['id_usuario']} | Nome: {u['nome']} | Email: {u['email']} | Tipo: {u['tipo_pele']}")
         except Error as e:
-            print(f"\n❌ [ERRO SQL] Falha ao consultar usuários: {e}")
+            print(f"\n[ERRO SQL] Falha ao consultar usuários: {e}")
         finally:
             cursor.close()
             conn.close()
@@ -69,9 +69,9 @@ class UsuarioDAO:
                 print(f"\n--- USUÁRIO LOCALIZADO ---")
                 print(f"ID: {usuario['id_usuario']}\nNome: {usuario['nome']}\nEmail: {usuario['email']}\nTipo de Pele: {usuario['tipo_pele']}")
             else:
-                print(f"\n⚠️ Nenhum usuário encontrado com o ID {id_usuario}.")
+                print(f"\n[AVISO] Nenhum usuário encontrado com o ID {id_usuario}.")
         except Error as e:
-            print(f"\n❌ [ERRO SQL] Falha ao buscar por ID: {e}")
+            print(f"\n[ERRO SQL] Falha ao buscar por ID: {e}")
         finally:
             cursor.close()
             conn.close()
@@ -89,12 +89,12 @@ class UsuarioDAO:
             conn.commit()
 
             if cursor.rowcount > 0:
-                print(f"\n✅ Usuário ID {id_usuario} atualizado com sucesso!")
+                print(f"\n[SUCESSO] Usuário ID {id_usuario} atualizado com sucesso!")
             else:
-                print(f"\n⚠️ Nenhum usuário localizado com o ID {id_usuario}.")
+                print(f"\n[AVISO] Nenhum usuário localizado com o ID {id_usuario}.")
         except Error as e:
             conn.rollback()
-            print(f"\n❌ [ERRO SQL] Falha ao atualizar usuário: {e}")
+            print(f"\n[ERRO SQL] Falha ao atualizar usuário: {e}")
         finally:
             cursor.close()
             conn.close()
@@ -112,12 +112,13 @@ class UsuarioDAO:
             conn.commit()
 
             if cursor.rowcount > 0:
-                print(f"\n🗑️ Usuário ID {id_usuario} deletado com sucesso do banco!")
+                print(f"\n[SUCESSO] Usuário ID {id_usuario} deletado com sucesso do banco!")
             else:
-                print(f"\n⚠️ Nenhum usuário localizado com o ID {id_usuario}.")
+                print(f"\n[AVISO] Nenhum usuário localizado com o ID {id_usuario}.")
         except Error as e:
             conn.rollback()
-            print(f"\n❌ [ERRO SQL] Falha ao deletar usuário: {e}")
+            print(f"\n[ERRO SQL] Falha ao deletar usuário: {e}")
         finally:
             cursor.close()
+            conn.close()
             conn.close()
