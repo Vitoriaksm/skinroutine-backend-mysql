@@ -19,11 +19,11 @@ def criar_conexao():
 
     except Error as err:
         if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
-            print("\n❌ [ERRO DE CONEXÃO] Usuário ou senha do MySQL estão incorretos.")
+            print("\n [ERRO DE CONEXÃO] Usuário ou senha do MySQL estão incorretos.")
         elif err.errno == errorcode.ER_BAD_DB_ERROR:
-            print("\n❌ [ERRO DE CONEXÃO] O banco 'skincare_db' não existe. Execute o script .sql da Entrega 4.")
+            print("\n [ERRO DE CONEXÃO] O banco 'skincare_db' não existe. Execute o script .sql da Entrega 4.")
         elif err.errno == 2003:
-            print("\n❌ [ERRO DE CONEXÃO] O servidor MySQL está offline. Ligue o MySQL na sua máquina.")
+            print("\n [ERRO DE CONEXÃO] O servidor MySQL está offline. Ligue o MySQL na sua máquina.")
         else:
-            print(f"\n❌ [ERRO DE CONEXÃO] Falha inesperada: {err}")
+            print(f"\n [ERRO DE CONEXÃO] Falha inesperada: {err}")
         return None
